@@ -176,7 +176,7 @@ async function verify() {
   }
   try {
     const fp = await buildFingerprint();
-    const res = await fetch(decodeURIComponent(callbackUrl), {
+    await fetch(decodeURIComponent(callbackUrl), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -185,16 +185,13 @@ async function verify() {
         initData: tg ? tg.initData : ""
       })
     });
-    const data = await res.json();
-    if (data && data.passed) {
-      show("resultOk");
-    } else {
-      document.getElementById("failReason").textContent =
-        (data && data.reason === "VPN/Proxy")
-          ? "VPN ወይም Proxy ተገኝቷል። VPN ን አጥፍተው ይሞክሩ።"
-          : "ይህ መሳሪያ ቀድሞ በሌላ አካውንት ተመዝግቧል።";
-      show("resultFail");
-    }
+    // The bot sends the real pass/fail result as a chat message right after
+    // this request lands — we don't rely on parsing the HTTP response body
+    // here, since that envelope shape isn't guaranteed. The chat is the
+    // source of truth.
+    show("resultOk");
+    document.querySelector("#resultOk .status").textContent = "ጥያቄው ተልኳል!";
+    document.querySelector("#resultOk p").textContent = "ውጤቱን በቻቱ ውስጥ ያያሉ። ይመለሱ።";
   } catch (e) {
     show("resultError");
   }
