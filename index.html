@@ -71,29 +71,29 @@
 <div class="card">
   <div id="loading">
     <div class="spinner"></div>
-    <div class="status">በማረጋገጥ ላይ...</div>
-    <p>እባክዎ ትንሽ ይጠብቁ፣ አካውንትዎን በማረጋገጥ ላይ ነን።</p>
+    <div class="status">Verifying...</div>
+    <p>Please wait a moment; we are verifying your account።</p>
   </div>
 
   <div id="resultOk" class="hidden">
     <div class="icon">✅</div>
-    <div class="status ok">ማረጋገጫ ተሳክቷል!</div>
-    <p>ወደ ቻቱ ተመልሰው መቀጠል ይችላሉ።</p>
-    <button onclick="closeApp()">ዝጋ / Continue</button>
+    <div class="status ok">Verification successful!</div>
+    <p>You can return to the chat and continue።</p>
+    <button onclick="closeApp()">Continue</button>
   </div>
 
   <div id="resultFail" class="hidden">
     <div class="icon">🚫</div>
-    <div class="status fail">ማረጋገጫ አልተሳካም</div>
-    <p id="failReason">VPN ወይም ብዙ አካውንት ተገኝቷል።</p>
-    <button onclick="closeApp()">ዝጋ / Close</button>
+    <div class="status fail">Verification failed.</div>
+    <p id="failReason">VPN or multiple accounts detected.</p>
+    <button onclick="closeApp()">Close</button>
   </div>
 
   <div id="resultError" class="hidden">
     <div class="icon">⚠️</div>
-    <div class="status fail">ችግር ተፈጥሯል</div>
-    <p>እባክዎ ቻቱ ውስጥ /start በመላክ እንደገና ይሞክሩ።</p>
-    <button onclick="closeApp()">ዝጋ / Close</button>
+    <div class="status fail">A problem has occurred.</div>
+    <p>Please try again by sending /start in the chat.</p>
+    <button onclick="closeApp()">Close</button>
   </div>
 </div>
 
